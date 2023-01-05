@@ -25,9 +25,12 @@ dependencyResolutionManagement {
     }
     versionCatalogs {
         create("libs") {
-            version("kotlin", extra["kotlin.version"] as String)
+            val kotlinVersion = extra["kotlin.version"] as String
+            version("kotlin", kotlinVersion)
 
-            library("compose.material3.desktop","org.jetbrains.compose.material3:material3-desktop:1.2.2")
+            plugin("kotlin.plugin.serialization", "org.jetbrains.kotlin.plugin.serialization").version(kotlinVersion)
+
+            library("compose.material3.desktop", "org.jetbrains.compose.material3:material3-desktop:1.2.2")
 
             library("kotlin.coroutine", "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
             library("kotlin.serialization.json", "org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1")
