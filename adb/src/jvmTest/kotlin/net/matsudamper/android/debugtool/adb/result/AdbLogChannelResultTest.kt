@@ -5,10 +5,10 @@ import io.kotest.matchers.collections.shouldHaveSize
 import io.kotest.matchers.shouldBe
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import net.matsudamper.android.debugtool.adb.log.AdbLogChannelResult
 import net.matsudamper.android.debugtool.adb.log.AdbLogResult
+import net.matsudamper.android.debugtool.waitSuccessAssertion
 import java.time.LocalDateTime
 
 class AdbLogChannelResultTest : StringSpec({
@@ -31,8 +31,10 @@ class AdbLogChannelResultTest : StringSpec({
                 startCollect()
             }
         }
-        delay(1)
-        result.logs.value.shouldHaveSize(1)
+        waitSuccessAssertion(timeoutMills = 1000) {
+            result.logs.value.shouldHaveSize(1)
+        }
+
         val expected = AdbLogResult(
             index = 0,
             dateTime = LocalDateTime.now()
@@ -68,8 +70,9 @@ class AdbLogChannelResultTest : StringSpec({
                 startCollect()
             }
         }
-        delay(1)
-        result.logs.value.shouldHaveSize(1)
+        waitSuccessAssertion(timeoutMills = 1000) {
+            result.logs.value.shouldHaveSize(1)
+        }
         val expected = AdbLogResult(
             index = 0,
             dateTime = LocalDateTime.now()
@@ -130,26 +133,26 @@ class AdbLogChannelResultTest : StringSpec({
         )
 
         firstLogLines.forEach { channel.send(it) }
-        delay(1)
         run {
-            val result = logResult.logs.value
-            result.shouldHaveSize(1)
-
-            result.first().shouldBe(expected)
+            waitSuccessAssertion(timeoutMills = 1000) {
+                val result = logResult.logs.value
+                result.shouldHaveSize(1)
+                result.first().shouldBe(expected)
+            }
         }
 
         secondLogLines.forEach { channel.send(it) }
-        delay(1)
         run {
-            val result = logResult.logs.value
-            result.shouldHaveSize(1)
-
-            result.first().shouldBe(
-                expected.copy(
-                    body = firstLogLines.plus(secondLogLines)
-                        .joinToString("\n")
+            waitSuccessAssertion(timeoutMills = 1000) {
+                val result = logResult.logs.value
+                result.shouldHaveSize(1)
+                result.first().shouldBe(
+                    expected.copy(
+                        body = firstLogLines.plus(secondLogLines)
+                            .joinToString("\n")
+                    )
                 )
-            )
+            }
         }
     }
 })

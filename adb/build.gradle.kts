@@ -22,6 +22,8 @@ kotlin {
         }
         val jvmTest by getting {
             dependencies {
+                implementation(project(":test_util"))
+
                 implementation(libs.kotest.runner.junit5)
             }
         }
