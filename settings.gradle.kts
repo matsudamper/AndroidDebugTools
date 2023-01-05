@@ -28,7 +28,7 @@ dependencyResolutionManagement {
             val kotlinVersion = extra["kotlin.version"] as String
             version("kotlin", kotlinVersion)
 
-            plugin("kotlin.plugin.serialization", "org.jetbrains.kotlin.plugin.serialization").version(kotlinVersion)
+            plugin("kotlin.serialization", "org.jetbrains.kotlin.plugin.serialization").version(kotlinVersion)
 
             library("compose.material3.desktop", "org.jetbrains.compose.material3:material3-desktop:1.2.2")
 
