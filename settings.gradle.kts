@@ -39,6 +39,7 @@ dependencyResolutionManagement {
 
             val kotestVersion = "5.5.4"
             library("kotest.runner.junit5", "io.kotest:kotest-runner-junit5:$kotestVersion")
+            library("kotest.assertion.core", "io.kotest:kotest-assertions-core:$kotestVersion")
         }
     }
 }
@@ -48,3 +49,4 @@ rootProject.name = "android-debug-tools"
 include(":adb")
 include(":compose")
 include(":config")
+include("test_util")
