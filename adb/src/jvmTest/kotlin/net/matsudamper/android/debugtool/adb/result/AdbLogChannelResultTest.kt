@@ -45,6 +45,8 @@ class AdbLogChannelResultTest : StringSpec({
             level = AdbLogResult.Level.Debug,
             tag = "L O G",
             body = logLines.joinToString("\n"),
+            pid = 8009,
+            ppid = 8698,
         )
         result.logs.value.first().shouldBe(expected)
     }
@@ -80,6 +82,8 @@ class AdbLogChannelResultTest : StringSpec({
             level = AdbLogResult.Level.Error,
             tag = "BLASTBufferQueue",
             body = logLines.joinToString("\n"),
+            pid = 14640,
+            ppid = 16121,
         )
         result.logs.value.first().shouldBe(expected)
     }
@@ -121,6 +125,8 @@ class AdbLogChannelResultTest : StringSpec({
             level = AdbLogResult.Level.Debug,
             tag = "L O G",
             body = firstLogLines.joinToString("\n"),
+            pid = 8009,
+            ppid = 8698,
         )
 
         firstLogLines.forEach { channel.send(it) }
