@@ -29,17 +29,20 @@ jobs:
       if: always()
       run: |
         files=$(find . -type f -regex ".*/build/.*/TEST-.*xml")
-        for file in files
-          MD_CODE="\`\`\`"
-          BODY=$(cat <<EOF
-          Firebase App Distribution
-          <details>
-          <summary>$file</summary>
+        echo $files
+        echo $files | while read file; do
         
-          $MD_CODE
-          `cat $file`
-          $MD_CODE
-          </details>
-          EOF
-          ) >> $GITHUB_STEP_SUMMARY
+        echo $file
+        MD_CODE="\`\`\`"
+        BODY=$(cat <<EOF
+        <details>
+        <summary>$file</summary>
+      
+        $MD_CODE
+        `cat $file`
+        $MD_CODE
+        </details>
+        EOF
+        )
+        echo "$BODY" > $GITHUB_STEP_SUMMARY
         done
