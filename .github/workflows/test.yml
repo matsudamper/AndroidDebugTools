@@ -28,4 +28,6 @@ jobs:
     - name: Publish Test Report
       if: always()
       run: |
+        find . -type f -regex ".*/build/.*/TEST-.*xml" 
+        find . -type f -regex ".*/build/.*/TEST-.*xml" | xargs cat
         find . -type f -regex ".*/build/.*/TEST-.*xml" | xargs cat >> $GITHUB_OUTPUT
