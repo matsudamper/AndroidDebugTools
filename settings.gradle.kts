@@ -32,7 +32,7 @@ dependencyResolutionManagement {
             library("kotlin.coroutine", "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
             library("kotlin.serialization.json", "org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1")
 
-            library("adam.adam", "com.malinskiy.adam:adam:0.4.7-SNAPSHOT")
+            library("adam.adam", "com.malinskiy.adam:adam:0.4.8")
 
             val kotestVersion = "5.5.4"
             library("kotest.runner.junit5", "io.kotest:kotest-runner-junit5:$kotestVersion")
