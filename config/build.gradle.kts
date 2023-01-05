@@ -1,7 +1,7 @@
 @Suppress("UnstableApiUsage")
 plugins {
     kotlin("multiplatform")
-    kotlin("plugin.serialization") version libs.versions.kotlin
+    kotlin("plugin.serialization") version 1.8.0
 }
 
 group = "net.matsudamper.android.debugtool.config"
