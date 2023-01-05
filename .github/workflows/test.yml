@@ -28,6 +28,8 @@ jobs:
     - name: collect Test Report
       if: always()
       run: |
-        find . -type f -regex ".*/build/.*/TEST-.*xml" 
+        find . -type f -regex ".*/build/.*/TEST-.*xml"
+        echo "=========="
         find . -type f -regex ".*/build/.*/TEST-.*xml" | xargs cat
+        echo "=========="
         find . -type f -regex ".*/build/.*/TEST-.*xml" | xargs cat >> $GITHUB_OUTPUT
