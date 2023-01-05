@@ -29,6 +29,7 @@ dependencyResolutionManagement {
             version("kotlin", kotlinVersion)
 
             plugin("kotlin.serialization", "org.jetbrains.kotlin.plugin.serialization").version(kotlinVersion)
+            plugin("detekt", "io.gitlab.arturbosch.detekt").version("1.22.0-RC2")
 
             library("compose.material3.desktop", "org.jetbrains.compose.material3:material3-desktop:1.2.2")
 
@@ -36,6 +37,7 @@ dependencyResolutionManagement {
             library("kotlin.serialization.json", "org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1")
 
             library("adam.adam", "com.malinskiy.adam:adam:0.4.8")
+            library("twitter.compose.rules.detekt", "com.twitter.compose.rules:detekt:0.0.26")
 
             val kotestVersion = "5.5.4"
             library("kotest.runner.junit5", "io.kotest:kotest-runner-junit5:$kotestVersion")
