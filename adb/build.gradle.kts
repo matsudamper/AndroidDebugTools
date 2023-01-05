@@ -1,6 +1,5 @@
 plugins {
     kotlin("multiplatform")
-    kotlin("plugin.serialization") version "1.7.20"
 }
 
 group = "net.matsudamper.android.debugtool.adb"
