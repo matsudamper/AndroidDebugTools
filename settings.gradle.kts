@@ -5,16 +5,10 @@ import groovy.lang.Closure
 apply(from = "dependency.gradle")
 
 pluginManagement {
-    repositories {
-        google()
-        gradlePluginPortal()
-        mavenCentral()
-        maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
-    }
 }
 
-val applyMyDependencyResolutionManagement = extra["applyMyDependencyResolutionManagement"] as Closure<*>
-applyMyDependencyResolutionManagement(settings)
+val applyMyDependency = extra["applyMyDependency"] as Closure<*>
+applyMyDependency(settings)
 
 rootProject.name = "android-debug-tools"
 
