@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.compose)
+    id("conventions.detekt")
 }
 
 group = "net.matsudamper.android.debugtool.compose"
