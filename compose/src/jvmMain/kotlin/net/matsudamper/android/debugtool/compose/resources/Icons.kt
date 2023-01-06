@@ -26,4 +26,3 @@ object MyIcons {
             return painterResource("drawable/vertical_align_top_black_24dp.svg")
         }
 }
-

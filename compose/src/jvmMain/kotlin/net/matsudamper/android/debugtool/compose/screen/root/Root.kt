@@ -8,10 +8,10 @@ import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material.DropdownMenu
 import androidx.compose.material.DropdownMenuItem
-import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.Refresh
+import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -24,12 +24,12 @@ import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.rememberDialogState
 import net.matsudamper.android.debugtool.compose.layout.CustomScaffold
 import net.matsudamper.android.debugtool.compose.resources.AliceBlue
-import net.matsudamper.android.debugtool.compose.screen.drawer.DrawerContent
-import net.matsudamper.android.debugtool.compose.screen.page.containers.LogsPage
-import net.matsudamper.android.debugtool.compose.screen.page.images.ImagesPage
 import net.matsudamper.android.debugtool.compose.resources.AppTheme
 import net.matsudamper.android.debugtool.compose.resources.applyStyle
+import net.matsudamper.android.debugtool.compose.screen.drawer.DrawerContent
+import net.matsudamper.android.debugtool.compose.screen.page.containers.LogsPage
 import net.matsudamper.android.debugtool.compose.screen.page.containers.LogsPageUiState
+import net.matsudamper.android.debugtool.compose.screen.page.images.ImagesPage
 import java.util.UUID
 
 @Composable

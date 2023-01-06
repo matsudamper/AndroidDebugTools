@@ -1,9 +1,6 @@
 package net.matsudamper.android.debugtool.compose.resources
 
-import androidx.compose.material.Colors
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material3.ColorScheme
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
@@ -20,7 +17,7 @@ enum class AnnotatedStringTag(val tagName: String) {
     }
 }
 
-fun AnnotatedString.applyStyle(colors: ColorScheme) : AnnotatedString {
+fun AnnotatedString.applyStyle(colors: ColorScheme): AnnotatedString {
     val original = this
     return buildAnnotatedString {
         append(original)

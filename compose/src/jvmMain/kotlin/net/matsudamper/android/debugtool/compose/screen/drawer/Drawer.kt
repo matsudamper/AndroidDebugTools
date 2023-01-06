@@ -2,17 +2,16 @@ package net.matsudamper.android.debugtool.compose.screen.drawer
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.desktop.ui.tooling.preview.Preview
-import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.LocalContentAlpha
-import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.ripple.rememberRipple
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
@@ -23,7 +22,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import net.matsudamper.android.debugtool.compose.resources.MyIcons
 import net.matsudamper.android.debugtool.compose.screen.root.RootUiState
-
 
 @Composable
 fun DrawerContent(
@@ -128,10 +126,12 @@ private fun Header(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.Start,
             ) {
-                Box(Modifier.clickable(
-                    indication = rememberRipple(bounded = false),
-                    interactionSource = remember { MutableInteractionSource() },
-                ) { onClickMenuExpand() }) {
+                Box(
+                    Modifier.clickable(
+                        indication = rememberRipple(bounded = false),
+                        interactionSource = remember { MutableInteractionSource() },
+                    ) { onClickMenuExpand() }
+                ) {
                     Icon(
                         modifier = Modifier.size(32.dp),
                         imageVector = Icons.Default.Menu,

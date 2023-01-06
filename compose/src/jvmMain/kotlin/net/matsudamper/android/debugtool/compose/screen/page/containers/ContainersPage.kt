@@ -166,7 +166,9 @@ private fun Header(
                                 .border(
                                     BorderStroke(
                                         1.dp,
-                                        SolidColor(if (textFieldHasFocus) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outline)
+                                        SolidColor(
+                                            if (textFieldHasFocus) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.outline
+                                        )
                                     ),
                                     RoundedCornerShape(4.dp)
                                 )
@@ -244,7 +246,6 @@ private fun ToggleButton(
         )
     }
 }
-
 
 @Composable
 private fun LazyColumContent(
