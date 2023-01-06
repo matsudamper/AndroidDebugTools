@@ -1,10 +1,14 @@
 import io.gitlab.arturbosch.detekt.Detekt
+import io.gitlab.arturbosch.detekt.DetektGenerateConfigTask
 import io.gitlab.arturbosch.detekt.DetektPlugin
+import io.gitlab.arturbosch.detekt.extensions.DetektExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.artifacts.VersionCatalogsExtension
+import org.gradle.api.reporting.ReportingExtension
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.getByType
+import org.gradle.kotlin.dsl.withType
 
 @Suppress("unused")
 class DetektConventionPlugin : Plugin<Project> {
@@ -17,26 +21,22 @@ class DetektConventionPlugin : Plugin<Project> {
                 detektPlugins(libs.findLibrary("twitter.compose.rules.detekt").get())
                 detektPlugins(libs.findLibrary("detekt.formatting").get())
             }
-
-
-            val detekt = target.project.getTasksByName("detekt", false) as HashSet<*>
-            (detekt.first() as Detekt).apply {
+            extensions.getByType<DetektExtension>().apply {
                 source = files(
                     "src/main/kotlin",
                     "src/main/java",
-                ).asFileTree
+                )
                 parallel = true
-                config.setFrom(files("${rootProject.projectDir}/detekt.config.yml"))
                 buildUponDefaultConfig = true
                 allRules = false
-                baseline.set(file("path/to/baseline.xml"))
                 disableDefaultRuleSets = true
+                config.setFrom(file("${rootProject.projectDir}/detekt.config.yml"))
                 debug = false
                 ignoreFailures = false
                 basePath = projectDir.path
+            }
+            tasks.withType<Detekt>().configureEach {
                 reports {
-                    xml.required.set(false)
-                    xml.outputLocation.set(file("build/reports/detekt.xml"))
                     html.required.set(false)
                     txt.required.set(true)
                     txt.outputLocation.set(file("build/reports/detekt.txt"))
