@@ -29,6 +29,7 @@ ext["applyMyDependency"] = (Settings settings) -> {
                 def detektVersion = "1.22.0"
                 library("detekt.gradlePlugin", "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:$detektVersion")
                 library("detekt.formatting", "io.gitlab.arturbosch.detekt:detekt-formatting:$detektVersion")
+                library("twitter.compose.rules.detekt", "com.twitter.compose.rules:detekt:0.0.26")
 
                 library("compose.material3.desktop", "org.jetbrains.compose.material3:material3-desktop:1.2.2")
 
@@ -36,7 +37,6 @@ ext["applyMyDependency"] = (Settings settings) -> {
                 library("kotlin.serialization.json", "org.jetbrains.kotlinx:kotlinx-serialization-json:1.4.1")
 
                 library("adam.adam", "com.malinskiy.adam:adam:0.4.8")
-                library("twitter.compose.rules.detekt", "com.twitter.compose.rules:detekt:0.0.26")
 
                 def kotestVersion = "5.5.4"
                 library("kotest.runner.junit5", "io.kotest:kotest-runner-junit5:$kotestVersion")
