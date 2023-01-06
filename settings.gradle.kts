@@ -5,7 +5,7 @@ import groovy.lang.Closure
 apply(from = "dependency.gradle")
 
 pluginManagement {
-    includeBuild("build-conventions")
+    includeBuild("build-logic")
 }
 
 val applyMyDependency = extra["applyMyDependency"] as Closure<*>

@@ -2,7 +2,7 @@
 
 import groovy.lang.Closure
 
-rootProject.name = "build-conventions"
+rootProject.name = "build-logic"
 
 apply(from = "../dependency.gradle")
 
