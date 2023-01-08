@@ -80,7 +80,7 @@ jobs:
           ./gradlew packageDmg
       - name: publish
         run: |
-          find build/compose
+          Get-ChildItem -File -Recurse build/compose/
           files=$(find build/compose/binaries/main/dmg/*)
           for file in files; do
             gh release upload $VERSION $file
