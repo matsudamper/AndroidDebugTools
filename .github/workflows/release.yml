@@ -14,7 +14,6 @@ jobs:
       GH_TOKEN: ${{ github.token }}
       VERSION: ${{ github.event.inputs.VERSION }}
     steps:
-      - uses: actions/checkout@v3
       - name: package
         run: |
           gh release create $VERSION --draft=true
