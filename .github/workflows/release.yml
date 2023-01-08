@@ -36,7 +36,7 @@ jobs:
           ./gradlew packageMsi
       - name: publish
         run: |
-          ./gradlew build/compose/binaries/main/msi
+          Get-ChildItem -File -Recurse build/compose/
           $files = Get-ChildItem -File build/compose/binaries/main/msi | where {! $_.PSIsContainer}
           foreach ($file in $files) {
               gh release upload $VERSION build/compose/binaries/main/msi/${file.Name}
@@ -58,9 +58,8 @@ jobs:
           ./gradlew packageDeb
       - name: publish
         run: |
-          find build/compose
           files=$(find build/compose/binaries/main/deb/*)
-          for file in files; do
+          for file in $files; do
             gh release upload $VERSION $file
           done
   package-dmg:
@@ -80,9 +79,8 @@ jobs:
           ./gradlew packageDmg
       - name: publish
         run: |
-          Get-ChildItem -File -Recurse build/compose/
           files=$(find build/compose/binaries/main/dmg/*)
-          for file in files; do
+          for file in $files; do
             gh release upload $VERSION $file
           done
 
