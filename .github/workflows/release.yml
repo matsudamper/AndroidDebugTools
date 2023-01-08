@@ -11,6 +11,7 @@ jobs:
   create-draft-release:
     runs-on: ubuntu-latest
     env:
+      GH_TOKEN: ${{ github.token }}
       VERSION: ${{ github.event.inputs.VERSION }}
     steps:
       - uses: actions/checkout@v3
@@ -22,6 +23,7 @@ jobs:
     runs-on: windows-latest
     needs: [ create-draft-release ]
     env:
+      GH_TOKEN: ${{ github.token }}
       VERSION: ${{ github.event.inputs.VERSION }}
     steps:
       - uses: actions/checkout@v3
@@ -43,6 +45,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [ create-draft-release ]
     env:
+      GH_TOKEN: ${{ github.token }}
       VERSION: ${{ github.event.inputs.VERSION }}
     steps:
       - uses: actions/checkout@v3
@@ -63,6 +66,7 @@ jobs:
     runs-on: macos-latest
     needs: [ create-draft-release ]
     env:
+      GH_TOKEN: ${{ github.token }}
       VERSION: ${{ github.event.inputs.VERSION }}
     steps:
       - uses: actions/checkout@v3
@@ -84,6 +88,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [ package-dmg, package-msi, package-deb ]
     env:
+      GH_TOKEN: ${{ github.token }}
       VERSION: ${{ github.event.inputs.VERSION }}
     steps:
       - name: release
