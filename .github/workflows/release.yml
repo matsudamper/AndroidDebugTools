@@ -36,10 +36,10 @@ jobs:
           ./gradlew packageMsi
       - name: publish
         run: |
-          ./gradlew ~/build/compose/binaries/main/msi
-          $files = Get-ChildItem -File ~/build/compose/binaries/main/msi | where {! $_.PSIsContainer}
+          ./gradlew build/compose/binaries/main/msi
+          $files = Get-ChildItem -File build/compose/binaries/main/msi | where {! $_.PSIsContainer}
           foreach ($file in $files) {
-              gh release upload ~/build/compose/binaries/main/msi/${file.Name}
+              gh release upload build/compose/binaries/main/msi/${file.Name}
           }
   package-deb:
     runs-on: ubuntu-latest
@@ -58,7 +58,7 @@ jobs:
           ./gradlew packageDeb
       - name: publish
         run: |
-          files=$(find ~/build/compose/binaries/main/deb/*)
+          files=$(find build/compose/binaries/main/deb/*)
           for file in files; do
             gh release upload $file
           done
@@ -79,7 +79,7 @@ jobs:
           ./gradlew packageDmg
       - name: publish
         run: |
-          files=$(find ~/build/compose/binaries/main/dmg/*)
+          files=$(find build/compose/binaries/main/dmg/*)
           for file in files; do
             gh release upload $file
           done
