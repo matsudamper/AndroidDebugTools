@@ -58,6 +58,7 @@ jobs:
           ./gradlew packageDeb
       - name: publish
         run: |
+          find build/compose
           files=$(find build/compose/binaries/main/deb/*)
           for file in files; do
             gh release upload $VERSION $file
@@ -79,6 +80,7 @@ jobs:
           ./gradlew packageDmg
       - name: publish
         run: |
+          find build/compose
           files=$(find build/compose/binaries/main/dmg/*)
           for file in files; do
             gh release upload $VERSION $file
