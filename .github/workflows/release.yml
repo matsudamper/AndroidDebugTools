@@ -39,7 +39,7 @@ jobs:
           ./gradlew build/compose/binaries/main/msi
           $files = Get-ChildItem -File build/compose/binaries/main/msi | where {! $_.PSIsContainer}
           foreach ($file in $files) {
-              gh release upload build/compose/binaries/main/msi/${file.Name}
+              gh release upload $VERSION build/compose/binaries/main/msi/${file.Name}
           }
   package-deb:
     runs-on: ubuntu-latest
@@ -60,7 +60,7 @@ jobs:
         run: |
           files=$(find build/compose/binaries/main/deb/*)
           for file in files; do
-            gh release upload $file
+            gh release upload $VERSION $file
           done
   package-dmg:
     runs-on: macos-latest
@@ -81,7 +81,7 @@ jobs:
         run: |
           files=$(find build/compose/binaries/main/dmg/*)
           for file in files; do
-            gh release upload $file
+            gh release upload $VERSION $file
           done
 
   release:
