@@ -91,6 +91,7 @@ jobs:
       GH_TOKEN: ${{ github.token }}
       VERSION: ${{ github.event.inputs.VERSION }}
     steps:
+      - uses: actions/checkout@v3
       - name: release
         run: |
           gh release edit $VERSION --draft=false
