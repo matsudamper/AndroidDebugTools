@@ -36,10 +36,9 @@ jobs:
           ./gradlew packageMsi
       - name: publish
         run: |
-          Get-ChildItem -File -Recurse build/compose/
           $files = Get-ChildItem -File build/compose/binaries/main/msi | where {! $_.PSIsContainer}
           foreach ($file in $files) {
-              gh release upload $VERSION build/compose/binaries/main/msi/${file.Name}
+              gh release upload ${ENV:VERSION} build/compose/binaries/main/msi/${file.Name}
           }
   package-deb:
     runs-on: ubuntu-latest
