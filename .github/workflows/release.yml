@@ -93,4 +93,4 @@ jobs:
     steps:
       - name: release
         run: |
-          gh release update $VERSION --draft=false
+          gh release edit $VERSION --draft=false
