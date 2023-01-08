@@ -43,8 +43,10 @@ compose.desktop {
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
             vendor = "matsudamper"
-            packageName = "Android DebugTools"
-            packageVersion = "1.0.0"
+            packageName = "AndroidDebugTools"
+            packageVersion = System.getProperty("VERSION")
+                .takeIf { it?.isNotBlank() == true }
+                ?: "1.0.0"
         }
     }
 }

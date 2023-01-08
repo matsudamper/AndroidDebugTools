@@ -1,0 +1,91 @@
+name: release
+on:
+  workflow_dispatch:
+    inputs:
+      VERSION:
+        description: "version"
+        required: true
+        type: string
+
+jobs:
+  create-draft-release:
+    runs-on: ubuntu-latest
+    env:
+      VERSION: ${{ github.event.inputs.VERSION }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: package
+        run: |
+          gh release create $VERSION --draft=true
+
+  package-msi:
+    runs-on: windows-latest
+    needs: [ create-draft-release ]
+    env:
+      VERSION: ${{ github.event.inputs.VERSION }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - name: package
+        run: |
+          ./gradlew packageMsi
+      - name: publish
+        run: |
+          ./gradlew ~/build/compose/binaries/main/msi
+          $files = Get-ChildItem -File ~/build/compose/binaries/main/msi | where {! $_.PSIsContainer}
+          foreach ($file in $files) {
+              gh release upload ~/build/compose/binaries/main/msi/${file.Name}
+          }
+  package-deb:
+    runs-on: ubuntu-latest
+    needs: [ create-draft-release ]
+    env:
+      VERSION: ${{ github.event.inputs.VERSION }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - name: package
+        run: |
+          ./gradlew packageDeb
+      - name: publish
+        run: |
+          files=$(find ~/build/compose/binaries/main/deb/*)
+          for file in files; do
+            gh release upload $file
+          done
+  package-dmg:
+    runs-on: macos-latest
+    needs: [ create-draft-release ]
+    env:
+      VERSION: ${{ github.event.inputs.VERSION }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - name: package
+        run: |
+          ./gradlew packageDmg
+      - name: publish
+        run: |
+          files=$(find ~/build/compose/binaries/main/dmg/*)
+          for file in files; do
+            gh release upload $file
+          done
+
+  release:
+    runs-on: ubuntu-latest
+    needs: [ package-dmg, package-msi, package-deb ]
+    env:
+      VERSION: ${{ github.event.inputs.VERSION }}
+    steps:
+      - name: release
+        run: |
+          gh release $VERSION --draft=false
