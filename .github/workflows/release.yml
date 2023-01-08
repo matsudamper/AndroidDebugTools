@@ -38,7 +38,8 @@ jobs:
         run: |
           $files = Get-ChildItem -File build/compose/binaries/main/msi | where {! $_.PSIsContainer}
           foreach ($file in $files) {
-              gh release upload ${ENV:VERSION} build/compose/binaries/main/msi/${file.Name}
+            $name = $file.Name
+            gh release upload ${ENV:VERSION} build/compose/binaries/main/msi/$name
           }
   package-deb:
     runs-on: ubuntu-latest
