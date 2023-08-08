@@ -23,7 +23,7 @@ ext["applyMyDependency"] = (Settings settings) -> {
                 plugin("kotlin.multiplatform", "org.jetbrains.kotlin.multiplatform").version(kotlinVersion)
                 library("kotlin.gradlePlugin", "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
 
-                def composeVersion = "1.3.0-rc01"
+                def composeVersion = "1.4.3"
                 plugin("compose", "org.jetbrains.compose").version(composeVersion)
 
                 def detektVersion = "1.22.0"
