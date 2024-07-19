@@ -17,7 +17,7 @@ ext["applyMyDependency"] = (Settings settings) -> {
         }
         versionCatalogs {
             create("libs") {
-                def kotlinVersion = "1.7.20"
+                def kotlinVersion = "1.9.25"
                 version("kotlin", kotlinVersion)
                 plugin("kotlin.serialization", "org.jetbrains.kotlin.plugin.serialization").version(kotlinVersion)
                 plugin("kotlin.multiplatform", "org.jetbrains.kotlin.multiplatform").version(kotlinVersion)
