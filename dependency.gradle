@@ -36,7 +36,7 @@ ext["applyMyDependency"] = (Settings settings) -> {
                 library("kotlin.coroutine", "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
                 library("kotlin.serialization.json", "org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
 
-                library("adam.adam", "com.malinskiy.adam:adam:0.4.8")
+                library("adam.adam", "com.malinskiy.adam:adam:0.5.8")
 
                 def kotestVersion = "5.6.2"
                 library("kotest.runner.junit5", "io.kotest:kotest-runner-junit5:$kotestVersion")
