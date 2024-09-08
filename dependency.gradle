@@ -26,7 +26,7 @@ ext["applyMyDependency"] = (Settings settings) -> {
                 def composeVersion = "1.4.3"
                 plugin("compose", "org.jetbrains.compose").version(composeVersion)
 
-                def detektVersion = "1.22.0"
+                def detektVersion = "1.23.7"
                 library("detekt.gradlePlugin", "io.gitlab.arturbosch.detekt:detekt-gradle-plugin:$detektVersion")
                 library("detekt.formatting", "io.gitlab.arturbosch.detekt:detekt-formatting:$detektVersion")
                 library("twitter.compose.rules.detekt", "com.twitter.compose.rules:detekt:0.0.26")
