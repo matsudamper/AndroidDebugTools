@@ -31,7 +31,7 @@ ext["applyMyDependency"] = (Settings settings) -> {
                 library("detekt.formatting", "io.gitlab.arturbosch.detekt:detekt-formatting:$detektVersion")
                 library("twitter.compose.rules.detekt", "com.twitter.compose.rules:detekt:0.0.26")
 
-                library("compose.material3.desktop", "org.jetbrains.compose.material3:material3-desktop:1.4.3")
+                library("compose.material3.desktop", "org.jetbrains.compose.material3:material3-desktop:1.7.0")
 
                 library("kotlin.coroutine", "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
                 library("kotlin.serialization.json", "org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
